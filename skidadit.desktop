@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Skidadit
+Comment=A dynamic task manager
+Exec=skidadit
+Icon=${SNAP}/bin/skidadit-icon.png
+Terminal=false
+Categories=Utility;
+StartupWMClass=skidadit

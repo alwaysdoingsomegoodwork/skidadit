@@ -1,0 +1,41 @@
+name: skidadit
+base: core24
+version: '1.0'
+summary: A dynamic task manager with system tray integration.
+description: |
+  Skidadit is a fast, local task management desktop application. 
+  It features an expanding interface, system tray support, and local SQLite data storage.
+icon: skidadit-icon.png
+contact: https://github.com/alwaysdoingsomegoodwork/skidadit.git
+issues: https://github.com/alwaysdoingsomegoodwork/skidadit.git
+website: https://github.com/alwaysdoingsomegoodwork/skidadit.git
+grade: stable
+confinement: strict
+
+apps:
+  skidadit:
+    command: bin/Skidadit.py
+    desktop: skidadit.desktop
+    extensions: [gnome]
+    plugs: [home]
+    environment:
+      PYTHONPATH: "$SNAP/usr/lib/python3/dist-packages:$SNAP/usr/lib/python3.12:$SNAP/usr/lib/python3.12/lib-dynload"
+
+layout:
+  /usr/share/tcltk:
+    bind: $SNAP/usr/share/tcltk
+  /usr/lib/tcltk:
+    bind: $SNAP/usr/lib/tcltk
+
+parts:
+  skidadit:
+    plugin: dump
+    source: .
+    organize:
+      Skidadit.py: bin/Skidadit.py
+      skidadit-icon.png: bin/skidadit-icon.png
+    stage-packages:
+      - python3-tk
+      - python3-pil
+      - python3-pil.imagetk
+      - python3-pystray
